@@ -6,9 +6,10 @@ import ContactDetails from '../components/contact/ContactDetails'
 export const ContactPage = () => {
   return (
     <div>
-        <HeroContact/>
-        <GetInTech/>
-        <ContactDetails/>
+      <HeroContact />
+
+      <GetInTech />
+      <ContactDetails />
     </div>
   )
 }
