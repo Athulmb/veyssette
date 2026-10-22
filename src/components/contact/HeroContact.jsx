@@ -2,57 +2,90 @@ import React from 'react';
 
 export const HeroContact = () => {
   return (
-    <div className="bg-[#0b0a08] text-[#f4eedf] min-h-[500px] lg:min-h-[600px] flex items-center relative overflow-hidden font-sans px-4 sm:px-6 lg:px-12 py-12">
-      
-      {/* Background Watermark Decorative Emblem */}
-      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/2 opacity-5 pointer-events-none hidden lg:block">
-        <svg className="w-[500px] h-[500px] text-[#d4af37]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-        </svg>
+    <section className="relative w-full overflow-hidden bg-[#0e0c0a] text-[#f3e6cf] border-b border-[#2a241b]">
+
+      {/* Decorative Background Flower Watermark */}
+      <div className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 opacity-[0.035] text-[#cba653]">
+        <Flower2 size={620} strokeWidth={0.8} />
       </div>
 
-      <div className="max-w-7xl mx-w-full w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        
-        {/* Left Content Column */}
-        <div className="lg:col-span-6 flex flex-col justify-center text-left">
-          
-          {/* Breadcrumb */}
-          <div className="flex items-center space-x-2 text-xs uppercase tracking-[0.2em] mb-6">
-            <span className="text-[#a39e93] hover:text-[#d4af37] transition-colors cursor-pointer">Home</span>
-            <span className="text-[#3a352c]">/</span>
-            <span className="text-[#d4af37] font-medium">Contact Us</span>
-          </div>
+      <div className="relative mx-auto max-w-[1720px] px-6 sm:px-10 lg:px-16 xl:px-20 py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12 min-h-[500px] lg:min-h-[560px]">
 
-          {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#fcf8f2] tracking-wide mb-6">
-            Contact Us
-          </h1>
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, ease: easeCurve }}
+            className="relative z-10 lg:col-span-6 flex flex-col justify-center"
+          >
+            {/* Breadcrumb */}
+            <div className="mb-6 sm:mb-8 flex items-center gap-3 text-sm sm:text-base font-medium tracking-wide text-[#cba451]">
+              <a
+                href="/"
+                className="transition-colors hover:text-[#f3e6cf]"
+              >
+                Home
+              </a>
+              <span className="text-[#cba451]/60">|</span>
+              <span className="text-[#cba451]">Contact Us</span>
+            </div>
 
-          {/* Gold Underline Accent */}
-          <div className="w-16 h-[2px] bg-[#d4af37] mb-6"></div>
+            {/* Main Heading */}
+            <h1 className="mb-6 font-serif text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.06] tracking-tight text-[#f3e6cf]">
+              Contact Us
+            </h1>
 
-          {/* Subtitle */}
-          <p className="text-[#a39e93] text-base sm:text-lg leading-relaxed max-w-lg">
-            Let’s start planning a personalized culinary experience crafted around you.
-          </p>
+            {/* Gold Divider Line */}
+            <div className="mb-8 h-[2px] w-[72px] bg-[#cba653]" />
+
+            {/* Description Paragraph */}
+            <p className="max-w-[540px] text-base sm:text-lg lg:text-[19px] leading-[1.7] text-[#c6b69b] font-normal">
+              Let's start planning a personalized culinary experience crafted around you.
+            </p>
+          </motion.div>
+
+          {/* Right Curved Arch Image Container with Right-Edge Gold Ornament */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.95, ease: easeCurve }}
+            className="relative z-10 lg:col-span-6 flex justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[640px]">
+
+              {/* Arched Image Container */}
+              <div className="relative w-full h-[380px] sm:h-[460px] lg:h-[540px] xl:h-[560px] overflow-hidden rounded-tl-[160px] sm:rounded-tl-[220px] lg:rounded-tl-[260px] border-t border-l border-[#cba653]/40 shadow-2xl bg-[#14120e]">
+                <img
+                  src="/image/magnific_luxury-hospitality-contac_vuGCVnJa47.webp"
+                  alt="Luxury hospitality reception desk with guest reservations book"
+                  className="h-full w-full object-cover object-center"
+                  loading="eager"
+                />
+                {/* Subtle Ambient Vignette Overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+              </div>
+
+              {/* Exact Gold Flower Ornament Line Asset - Mounted on the Right Edge of the Image */}
+              <div className="pointer-events-none absolute top-4 bottom-4 right-0 translate-x-1/2 z-20 flex items-center justify-center">
+                <img
+                  src="/image/ornament-flower.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[92%] w-auto object-contain drop-shadow-md"
+                />
+              </div>
+
+            </div>
+          </motion.div>
+
         </div>
-
-        {/* Right Image Column with Custom Curved Border */}
-        <div className="lg:col-span-6 flex justify-end">
-          <div className="relative w-full max-w-xl h-[350px] sm:h-[420px] lg:h-[480px] rounded-tl-[160px] sm:rounded-tl-[200px] overflow-hidden border border-[#d4af37]/30 shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000" 
-              alt="Concierge Desk" 
-              className="w-full h-full object-cover"
-            />
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  )
-}
+
+      {/* Gold Divider Line where next section starts */}
+      <div className="w-full h-[1px] bg-gradient-to-r from-[#cba653]/10 via-[#cba653]/55 to-[#cba653]/10" />
+    </section>
+  );
+};
 
 export default HeroContact;

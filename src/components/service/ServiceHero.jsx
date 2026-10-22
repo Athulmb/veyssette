@@ -1,77 +1,93 @@
-
 import React from 'react';
 import { Flower2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+const easeCurve = [0.16, 1, 0.3, 1];
 
 const ServiceHero = () => {
   return (
-    <section className="relative w-full overflow-hidden border-b border-[#493b24] bg-[#0e0c0a] text-[#f3e6cf]">
+    <section className="relative w-full overflow-hidden bg-[#0e0c0a] text-[#f3e6cf]">
 
-      {/* Decorative Background Flower */}
-      <div className="pointer-events-none absolute -left-20 top-0 opacity-[0.035]">
-        <Flower2 size={650} strokeWidth={1} />
+      {/* Decorative Background Flower Watermark */}
+      <div className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 opacity-[0.035] text-[#cba653]">
+        <Flower2 size={620} strokeWidth={0.8} />
       </div>
 
-      <div className="relative mx-auto grid min-h-[600px] max-w-[1900px] grid-cols-1 items-center lg:grid-cols-[1.25fr_1fr]">
+      <div className="relative mx-auto max-w-[1720px] px-6 sm:px-10 lg:px-16 xl:px-20 py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12 min-h-[500px] lg:min-h-[560px]">
 
-        {/* Left Content */}
-        <div className="relative z-10 px-6 py-16 sm:px-10 lg:py-24 xl:px-9">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, ease: easeCurve }}
+            className="relative z-10 lg:col-span-6 flex flex-col justify-center"
+          >
+            {/* Breadcrumb */}
+            <div className="mb-6 sm:mb-8 flex items-center gap-3 text-sm sm:text-base font-medium tracking-wide text-[#cba451]">
+              <a
+                href="/"
+                className="transition-colors hover:text-[#f3e6cf]"
+              >
+                Home
+              </a>
+              <span className="text-[#cba451]/60">|</span>
+              <span className="text-[#cba451]">Services</span>
+            </div>
 
-          {/* Breadcrumb */}
-          <div className="mb-10 flex items-center gap-6 text-lg font-semibold text-[#cba34f]">
-            <a
-              href="/"
-              className="transition-colors hover:text-[#f3e6cf]"
-            >
-              Home
-            </a>
+            {/* Main Heading */}
+            <h1 className="mb-6 font-serif text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.06] tracking-tight text-[#f3e6cf]">
+              Services
+            </h1>
 
-            <span className="h-5 w-px bg-[#493b24]" />
+            {/* Gold Divider Line */}
+            <div className="mb-8 h-[2px] w-[72px] bg-[#cba653]" />
 
-            <span>Services</span>
-          </div>
+            {/* Description Paragraph */}
+            <p className="max-w-[540px] text-base sm:text-lg lg:text-[19px] leading-[1.7] text-[#c6b69b] font-normal">
+              Personal chef experiences crafted for private dinners, weekly routines and unforgettable celebrations.
+            </p>
+          </motion.div>
 
-          {/* Heading */}
-          <h1 className="mb-12 font-serif text-5xl leading-tight sm:text-6xl lg:text-7xl xl:text-[88px]">
-            Services
-          </h1>
+          {/* Right Curved Arch Image Container with Right-Edge Gold Ornament */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.95, ease: easeCurve }}
+            className="relative z-10 lg:col-span-6 flex justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[640px]">
+              
+              {/* Arched Image Container */}
+              <div className="relative w-full h-[380px] sm:h-[460px] lg:h-[540px] xl:h-[560px] overflow-hidden rounded-tl-[160px] sm:rounded-tl-[220px] lg:rounded-tl-[260px] border-t border-l border-[#cba653]/40 shadow-2xl bg-[#14120e]">
+                <img
+                  src="/image/magnific_luxury-gourmet-dining-tab_ONu4VlEynm.webp"
+                  alt="Elegant luxury fine dining table with candlelight and champagne"
+                  className="h-full w-full object-cover object-center"
+                  loading="eager"
+                />
+                {/* Subtle Ambient Vignette Overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+              </div>
 
-          {/* Gold Divider */}
-          <div className="mb-12 h-1 w-[137px] bg-[#cba653]" />
+              {/* Exact Gold Flower Ornament Line Asset - Mounted on the Right Edge of the Image */}
+              <div className="pointer-events-none absolute top-4 bottom-4 right-0 translate-x-1/2 z-20 flex items-center justify-center">
+                <img
+                  src="/image/ornament-flower.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[92%] w-auto object-contain drop-shadow-md"
+                />
+              </div>
 
-          {/* Description */}
-          <p className="max-w-[820px] text-lg leading-9 text-[#c6b69b] sm:text-xl lg:text-[25px] lg:leading-[1.7]">
-            Personal chef experiences crafted for private dinners,
-            weekly routines and unforgettable celebrations.
-          </p>
-        </div>
+            </div>
+          </motion.div>
 
-        {/* Right Image */}
-        <div className="relative h-[420px] overflow-hidden border-l-0 border-[#493b24] sm:h-[520px] lg:h-[675px] lg:border-l-[3px] lg:rounded-tl-[300px]">
-
-          <img
-            src="https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt="Elegant fine dining table prepared for a private dinner"
-            className="h-full w-full object-cover"
-          />
-
-          {/* Image Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
-
-          {/* Gold Decorative Flower */}
-          <div className="absolute right-8 top-8 text-[#cba653]">
-            <Flower2 size={76} strokeWidth={0.8} />
-          </div>
-
-          {/* Vertical Gold Line */}
-          <div className="absolute bottom-12 right-8 top-36 flex flex-col items-center">
-            <div className="h-full w-px bg-[#cba653]" />
-            <div className="mt-1 h-3 w-3 rotate-45 border border-[#cba653] bg-[#0e0c0a]" />
-          </div>
         </div>
       </div>
 
-      {/* Bottom Decorative Space */}
-      <div className="h-20 sm:h-24" />
+      {/* Gold Divider Line where next section starts */}
+      <div className="w-full h-[1px] bg-gradient-to-r from-[#cba653]/10 via-[#cba653]/55 to-[#cba653]/10" />
     </section>
   );
 };
