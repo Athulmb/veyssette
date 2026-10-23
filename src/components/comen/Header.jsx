@@ -95,32 +95,28 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-[#c5a45b]/25 bg-[#0d0c0a]/92 text-white backdrop-blur-md transition-all duration-300">
-        <div className="mx-auto flex h-20 lg:h-24 max-w-[1920px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-50 w-full border-b border-[#c5a45b]/30 bg-[#0d0c0a]/92 text-white backdrop-blur-md transition-all duration-300">
+        <div className="mx-auto flex min-h-[72px] sm:min-h-[80px] lg:min-h-[96px] max-w-[1920px] items-center justify-between gap-3 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8">
 
-          {/* Brand Logo */}
-          <NavLink
-            to="/"
-            className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90"
-            aria-label="Veyssette Home"
-          >
+          {/* Logo */}
+          <NavLink to="/" className="flex shrink-0 items-center">
             <motion.img
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
               src="/image/logo.webp"
-              alt="Veyssette Personal Chef Experience"
-              className="h-10 sm:h-12 lg:h-[58px] w-auto object-contain cursor-pointer"
+              alt="Veyssette logo"
+              className="h-[44px] sm:h-[50px] lg:h-[60px] w-auto object-contain cursor-pointer"
             />
           </NavLink>
 
           {/* Desktop Navigation (Visible on lg >= 1024px including 1073px, 1280px, etc.) */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-8 2xl:gap-10 text-sm xl:text-base">
             {/* Home */}
             <NavLink
               to="/"
               end
               className={({ isActive }) =>
-                `relative pb-1 text-sm xl:text-[15px] font-medium tracking-wide transition ${
+                `relative pb-1 font-medium transition ${
                   isActive ? "text-[#c5a45b]" : "text-white/90 hover:text-[#c5a45b]"
                 }`
               }
@@ -143,7 +139,7 @@ const Header = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `relative pb-1 text-sm xl:text-[15px] font-medium tracking-wide transition ${
+                `relative pb-1 font-medium transition ${
                   isActive ? "text-[#c5a45b]" : "text-white/90 hover:text-[#c5a45b]"
                 }`
               }
@@ -173,7 +169,7 @@ const Header = () => {
                   to="/services"
                   onClick={() => setActiveDropdown(null)}
                   className={({ isActive }) =>
-                    `relative pb-1 text-sm xl:text-[15px] font-medium tracking-wide transition ${
+                    `relative pb-1 font-medium transition ${
                       isActive ? "text-[#c5a45b]" : "text-white/90 hover:text-[#c5a45b]"
                     }`
                   }
@@ -281,7 +277,7 @@ const Header = () => {
                   setActiveDropdown((prev) => (prev === "pages" ? null : "pages"))
                 }
                 aria-haspopup="true"
-                className="relative flex items-center gap-1.5 pb-1 text-sm xl:text-[15px] font-medium tracking-wide text-white/90 transition hover:text-[#c5a45b]"
+                className="relative flex items-center gap-1.5 pb-1 font-medium text-white/90 transition hover:text-[#c5a45b]"
               >
                 Pages
                 <ChevronDown
@@ -341,7 +337,7 @@ const Header = () => {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `relative pb-1 text-sm xl:text-[15px] font-medium tracking-wide transition ${
+                `relative pb-1 font-medium transition ${
                   isActive ? "text-[#c5a45b]" : "text-white/90 hover:text-[#c5a45b]"
                 }`
               }
@@ -362,43 +358,43 @@ const Header = () => {
           </nav>
 
           {/* Desktop Right CTA (Visible on lg >= 1024px) */}
-          <div className="hidden lg:flex shrink-0 items-center gap-5 xl:gap-8">
+          <div className="hidden shrink-0 items-center gap-4 lg:flex xl:gap-8">
             <motion.a
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ x: 3 }}
               href="tel:+10331234567"
-              className="group flex items-center gap-2.5 whitespace-nowrap text-sm xl:text-base font-semibold text-white/95 hover:text-[#c5a45b] transition-colors"
+              className="flex items-center gap-2.5 whitespace-nowrap text-sm font-semibold text-white hover:text-[#c5a45b] transition-colors xl:text-base 2xl:text-lg"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c5a45b]/40 bg-[#1a1712] text-[#c5a45b] shadow-sm group-hover:border-[#c5a45b] group-hover:bg-[#c5a45b]/10 transition-colors">
-                <Phone size={16} className="fill-[#c5a45b]" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c5a45b]/40 bg-[#1a1712] text-[#c5a45b] shadow-sm">
+                <Phone size={17} className="fill-[#c5a45b]" />
               </div>
-              <span className="tracking-wide">+(1) 033 1234-567</span>
+              <span>+(1) 033 1234-567</span>
             </motion.a>
 
             <NavLink
               to="/book"
-              className="luxury-btn flex items-center justify-center rounded-lg bg-[#cbaa63] px-5 xl:px-6 py-2.5 xl:py-3 text-xs xl:text-sm font-bold tracking-wider uppercase text-[#15130f] shadow-lg shadow-[#cbaa63]/20 hover:scale-104 transition-transform"
+              className="luxury-btn flex min-h-[44px] items-center justify-center rounded-lg bg-[#cbaa63] px-5 text-xs font-bold tracking-wide text-[#15130f] shadow-lg shadow-[#cbaa63]/20 hover:scale-104 transition-transform lg:min-h-[48px] lg:px-6 lg:text-sm"
             >
               Book A Chef
             </NavLink>
           </div>
 
           {/* Mobile/Tablet Bar Actions (Visible on < 1024px) */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5 lg:hidden">
+          <div className="flex items-center gap-2.5 sm:gap-3 lg:hidden">
             {/* Quick Call Icon Button */}
             <a
               href="tel:+10331234567"
-              aria-label="Direct Call"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c5a45b]/40 bg-[#181510] text-[#c5a45b] shadow-sm hover:border-[#c5a45b] hover:bg-[#c5a45b]/15 active:scale-95 transition-all"
+              aria-label="Direct Call Concierge"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#c5a45b]/40 bg-[#181510] text-[#c5a45b] shadow-sm hover:border-[#c5a45b] hover:bg-[#c5a45b]/15 active:scale-95 transition-all"
             >
-              <Phone size={17} className="fill-[#c5a45b]" />
+              <Phone size={16} className="fill-[#c5a45b]" />
             </a>
 
-            {/* Quick Compact Book Button */}
+            {/* Quick Book CTA Button */}
             <NavLink
               to="/book"
-              className="hidden sm:inline-flex items-center justify-center rounded-lg bg-[#cbaa63] px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#15130f] shadow-md hover:bg-[#dfbd72] active:scale-95 transition-all"
+              className="luxury-btn flex h-9 sm:h-10 items-center justify-center rounded-lg bg-[#cbaa63] px-3 sm:px-4 text-xs font-bold text-[#15130f] shadow-md hover:bg-[#dfbd72] active:scale-95 transition-all"
             >
-              Book
+              Book A Chef
             </NavLink>
 
             {/* Luxury Animated Hamburger Button */}
@@ -407,7 +403,7 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
-              className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-[#c5a45b]/50 bg-[#1c1812]/95 text-[#c5a45b] shadow-md shadow-black/40 hover:border-[#c5a45b] hover:bg-[#c5a45b]/15 active:scale-95 transition-all focus:outline-none"
+              className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#c5a45b]/50 bg-[#1c1812]/95 text-[#c5a45b] shadow-md shadow-black/40 hover:border-[#c5a45b] hover:bg-[#c5a45b]/15 active:scale-95 transition-all focus:outline-none"
             >
               <AnimatePresence mode="wait">
                 {mobileMenuOpen ? (
@@ -418,7 +414,7 @@ const Header = () => {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X size={21} />
+                    <X size={20} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -428,7 +424,7 @@ const Header = () => {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu size={21} />
+                    <Menu size={20} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -463,7 +459,7 @@ const Header = () => {
               aria-label="Mobile Navigation"
             >
               {/* Drawer Top Bar */}
-              <div className="flex h-20 items-center justify-between border-b border-[#3b3020]/80 px-6 bg-[#13110d]">
+              <div className="flex h-18 sm:h-20 items-center justify-between border-b border-[#3b3020]/80 px-5 sm:px-6 bg-[#13110d]">
                 <NavLink
                   to="/"
                   onClick={() => setMobileMenuOpen(false)}
@@ -472,7 +468,7 @@ const Header = () => {
                   <img
                     src="/image/logo.webp"
                     alt="Veyssette logo"
-                    className="h-10 w-auto object-contain"
+                    className="h-9 sm:h-10 w-auto object-contain"
                   />
                 </NavLink>
 
@@ -480,14 +476,14 @@ const Header = () => {
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
                   aria-label="Close menu"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c5a45b]/40 bg-[#1c1812] text-[#c5a45b] hover:border-[#c5a45b] hover:bg-[#c5a45b]/20 active:scale-95 transition-all"
+                  className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#c5a45b]/40 bg-[#1c1812] text-[#c5a45b] hover:border-[#c5a45b] hover:bg-[#c5a45b]/20 active:scale-95 transition-all"
                 >
-                  <X size={20} />
+                  <X size={18} />
                 </button>
               </div>
 
               {/* Drawer Scrollable Content */}
-              <div className="flex-1 overflow-y-auto px-5 py-6 space-y-4">
+              <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4">
 
                 {/* Primary Nav Links */}
                 <div className="flex flex-col space-y-1.5">
