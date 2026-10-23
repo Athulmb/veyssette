@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaFacebook,
   FaInstagram,
@@ -8,12 +9,15 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const pages = [
-    "Homepage",
-    "About Us",
-    "Services",
-    "Menu Experience",
-    "Gallery",
-    "Contact",
+    { name: "Homepage", path: "/" },
+    { name: "About Us", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Menu Experience", path: "/menu" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Book A Chef", path: "/book" },
+    { name: "FAQ", path: "/faq" },
+    { name: "Blog", path: "/blog" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const services = [
@@ -71,19 +75,15 @@ const Footer = () => {
             Our Pages
           </h3>
 
-          <ul className="space-y-5">
+          <ul className="space-y-4">
             {pages.map((page) => (
-              <li key={page}>
-                <a
-                  href={
-                    page === "Homepage"
-                      ? "/"
-                      : `/${page.toLowerCase().replaceAll(" ", "-")}`
-                  }
-                  className="text-[18px] font-semibold transition-colors duration-300 hover:text-[#d0a34c]"
+              <li key={page.name}>
+                <Link
+                  to={page.path}
+                  className="text-[17px] font-semibold transition-colors duration-300 hover:text-[#d0a34c]"
                 >
-                  {page}
-                </a>
+                  {page.name}
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,4 +1,30 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const easeCurve = [0.16, 1, 0.3, 1];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easeCurve,
+    },
+  },
+};
 
 const OurServices = () => {
   const services = [
@@ -33,11 +59,17 @@ const OurServices = () => {
   ];
 
   return (
-    <section className="w-full bg-[#0a0907] px-6 py-16 text-[#f3eee3] md:px-12 lg:px-16 lg:py-24">
+    <section className="relative w-full overflow-hidden bg-[#0a0907] px-6 py-16 text-[#f3eee3] md:px-12 lg:px-16 lg:py-24">
       <div className="mx-auto max-w-[1700px]">
         
-        {/* Top Header Section */}
-        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2 lg:gap-16">
+        {/* Top Header Section with Framer Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.85, ease: easeCurve }}
+          className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2 lg:gap-16"
+        >
           <div>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#cba451]">
               Our Services
@@ -45,7 +77,7 @@ const OurServices = () => {
             <h2 className="font-serif text-4xl leading-[1.15] text-[#f3eee3] sm:text-5xl lg:text-[56px]">
               Culinary Experiences Made
               <br />
-              For You
+              <span className="italic text-[#e5c178]">For You</span>
             </h2>
           </div>
 
@@ -57,23 +89,35 @@ const OurServices = () => {
               joy.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* 4 Cards Grid Section */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+        >
           {services.map((service) => (
-            <div key={service.title} className="flex flex-col">
+            <motion.div
+              key={service.title}
+              variants={cardVariants}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="group flex flex-col cursor-pointer"
+            >
               {/* Image Container with Border and Rounded Corners */}
-              <div className="overflow-hidden rounded-xl border border-[#2a241b] bg-[#14120e]">
+              <div className="luxury-card overflow-hidden rounded-xl border border-[#2a241b] bg-[#14120e]">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="h-[210px] w-full object-cover transition duration-500 hover:scale-105 sm:h-[220px]"
+                  className="h-[210px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 sm:h-[220px]"
                 />
               </div>
 
               {/* Title */}
-              <h3 className="mt-5 font-serif text-2xl font-normal text-[#f3eee3]">
+              <h3 className="mt-5 font-serif text-2xl font-normal text-[#f3eee3] transition-colors duration-300 group-hover:text-[#cba451]">
                 {service.title}
               </h3>
 
@@ -81,19 +125,28 @@ const OurServices = () => {
               <p className="mt-2.5 text-sm leading-relaxed text-[#b8ad9e]">
                 {service.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom CTA Button */}
-        <div className="mt-14 flex justify-center">
-          <a
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 flex justify-center"
+        >
+          <motion.a
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
             href="/services"
-            className="flex h-[52px] items-center justify-center rounded-md bg-[#d8b065] px-8 text-sm font-semibold text-[#14120e] transition duration-300 hover:bg-[#e2bd78]"
+            className="luxury-btn flex h-[52px] items-center justify-center rounded-md bg-[#d8b065] px-8 text-sm font-semibold text-[#14120e] shadow-lg shadow-[#cba451]/15"
           >
             View All Services
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
       </div>
     </section>

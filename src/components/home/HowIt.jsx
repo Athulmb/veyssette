@@ -5,6 +5,32 @@ import {
   ChefHat,
   Heart,
 } from "lucide-react";
+import { motion } from "framer-motion";
+
+const easeCurve = [0.16, 1, 0.3, 1];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const stepVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.85,
+      ease: easeCurve,
+    },
+  },
+};
 
 const HowIt = () => {
   const steps = [
@@ -39,12 +65,22 @@ const HowIt = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden bg-[#0d0c0a] px-5 py-20 text-[#f2e6d0] sm:px-8 lg:py-24">
+    <section className="relative w-full overflow-hidden bg-[#0d0c0a] px-5 py-20 text-[#f2e6d0] sm:px-8 lg:py-24">
 
-      {/* Section Heading */}
-      <div className="mb-20 text-center">
-        {/* Decorative Ornament */}
-        <div className="mb-3 flex justify-center text-[#cbaa63]">
+      {/* Section Heading with Framer Motion */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.85, ease: easeCurve }}
+        className="mb-20 text-center"
+      >
+        {/* Decorative Ornament with subtle floating pulse */}
+        <motion.div
+          animate={{ y: [0, -4, 0] }}
+          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+          className="mb-3 flex justify-center text-[#cbaa63]"
+        >
           <svg
             width="140"
             height="34"
@@ -61,59 +97,78 @@ const HowIt = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </div>
+        </motion.div>
 
         <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#cbaa63]">
           How It Works
         </p>
 
         <h2 className="mt-8 font-serif text-4xl leading-tight sm:text-5xl lg:text-[68px]">
-          Simple, Personal &amp; Seamless
+          Simple, Personal &amp; <span className="italic text-[#e5c178]">Seamless</span>
         </h2>
-      </div>
+      </motion.div>
 
-      {/* Steps */}
-      <div className="mx-auto grid max-w-[1700px] grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-
+      {/* Steps with Framer Motion Stagger */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="mx-auto grid max-w-[1700px] grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0"
+      >
         {steps.map((step, index) => {
           const Icon = step.icon;
 
           return (
-            <div
+            <motion.div
               key={step.number}
-              className="relative flex flex-col items-center text-center"
+              variants={stepVariants}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="group relative flex flex-col items-center text-center cursor-pointer"
             >
               {/* Icon Circle and Connector */}
               <div className="relative flex w-full items-center justify-center">
 
-                <div className="flex h-[106px] w-[106px] items-center justify-center rounded-full border border-[#6a542d] text-[#cbaa63]">
+                <motion.div
+                  whileHover={{ scale: 1.12, rotate: 6 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 15 }}
+                  className="flex h-[106px] w-[106px] items-center justify-center rounded-full border border-[#6a542d] bg-[#14120e] text-[#cbaa63] shadow-xl transition-all duration-300 group-hover:border-[#cbaa63] group-hover:shadow-[0_0_25px_rgba(203,170,99,0.3)]"
+                >
                   <Icon
-                    size={49}
+                    size={46}
                     strokeWidth={1.7}
                     aria-hidden="true"
                   />
-                </div>
+                </motion.div>
 
-                {/* Connecting Line */}
+                {/* Animated Connecting Line on desktop */}
                 {index !== steps.length - 1 && (
-                  <div className="absolute left-[calc(50%+122px)] hidden h-px w-[calc(100%-160px)] bg-[#514126] lg:block" />
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 + index * 0.2, ease: easeCurve }}
+                    style={{ originX: 0 }}
+                    className="absolute left-[calc(50%+65px)] hidden h-[1px] w-[calc(100%-130px)] bg-gradient-to-r from-[#6a542d] via-[#cbaa63]/50 to-[#6a542d] lg:block"
+                  />
                 )}
               </div>
 
               {/* Step Title */}
-              <h3 className="mt-10 font-serif text-[30px] text-[#e9dcc4]">
+              <h3 className="mt-10 font-serif text-[30px] text-[#e9dcc4] transition-colors duration-300 group-hover:text-[#cbaa63]">
                 {step.number} {step.title}
               </h3>
 
               {/* Description */}
-              <p className="mt-6 max-w-[300px] text-[18px] leading-[1.8] text-[#b9ad9b]">
+              <p className="mt-4 max-w-[300px] text-[18px] leading-[1.8] text-[#b9ad9b]">
                 {step.description}
               </p>
-            </div>
+            </motion.div>
           );
         })}
 
-      </div>
+      </motion.div>
     </section>
   );
 };

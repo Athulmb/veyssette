@@ -1,5 +1,29 @@
 import React from "react";
 import { ClipboardList, Utensils, Home, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 const Features = () => {
   const features = [
@@ -28,28 +52,45 @@ const Features = () => {
   return (
     <section className="w-full bg-[#0a0907] px-4 py-12 sm:px-8 sm:py-16">
       {/* Curved Container Wrapper */}
-      <div className="mx-auto max-w-[1920px] rounded-[50px] sm:rounded-[100px] lg:rounded-[180px] bg-[#14120e] px-6 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
-        
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto max-w-[1920px] rounded-[50px] bg-[#14120e] px-6 py-16 sm:rounded-[100px] sm:px-12 sm:py-20 lg:rounded-[180px] lg:px-16 lg:py-24 border border-[#cba451]/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+      >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0"
+        >
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div
+              <motion.div
                 key={feature.title}
-                className={`flex flex-col items-center text-center px-4 sm:px-6 ${
-                  /* Adding vertical divider lines between columns on desktop */
+                variants={cardVariants}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
+                className={`group flex flex-col items-center px-4 text-center sm:px-6 cursor-pointer ${
                   index !== features.length - 1
                     ? "lg:border-r lg:border-[#cba451]/20"
                     : ""
                 }`}
               >
-                {/* Gold Icon */}
-                <div className="mb-6 flex h-14 w-14 items-center justify-center text-[#cba451]">
-                  <Icon size={42} strokeWidth={1.5} />
-                </div>
+                {/* Gold Icon with hover spring */}
+                <motion.div
+                  whileHover={{ rotate: 8, scale: 1.15 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#cba451]/10 text-[#cba451] transition-colors duration-300 group-hover:bg-[#cba451]/20 group-hover:text-[#f3eee3]"
+                >
+                  <Icon size={38} strokeWidth={1.6} />
+                </motion.div>
 
                 {/* Title */}
-                <h3 className="whitespace-pre-line font-serif text-2xl font-normal leading-tight text-[#f3eee3] sm:text-3xl">
+                <h3 className="whitespace-pre-line font-serif text-2xl font-normal leading-tight text-[#f3eee3] sm:text-3xl transition-colors duration-300 group-hover:text-[#cba451]">
                   {feature.title}
                 </h3>
 
@@ -57,12 +98,12 @@ const Features = () => {
                 <p className="mt-4 max-w-[240px] text-sm leading-relaxed text-[#b8ad9e] sm:text-base">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };
