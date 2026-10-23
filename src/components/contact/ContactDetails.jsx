@@ -63,7 +63,7 @@ export const ContactDetails = () => {
           </h2>
         </motion.div>
 
-        {/* Contact Info Grid */}
+        {/* Contact Info Grid with Hover Lift & Stagger */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 relative">
           {contactItems.map((item, index) => (
             <motion.div 
@@ -72,24 +72,29 @@ export const ContactDetails = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: easeCurve }}
-              className={`flex flex-col items-center text-center px-6 py-6 relative ${
+              whileHover={{ y: -6 }}
+              className={`flex flex-col items-center text-center px-6 py-8 relative rounded-xl transition-colors duration-300 group cursor-default hover:bg-[#14120e]/60 ${
                 index < contactItems.length - 1 ? 'lg:border-r lg:border-[#2a241b]' : ''
               }`}
             >
-              {/* Icon Container */}
-              <div className="mb-6 p-4 rounded-full bg-[#14120e] border border-[#cba451]/30 shadow-lg">
+              {/* Icon Container with interactive scale & gold glow */}
+              <motion.div 
+                whileHover={{ scale: 1.12, rotate: 3 }}
+                transition={{ duration: 0.35, ease: easeCurve }}
+                className="mb-6 p-4 rounded-full bg-[#14120e] border border-[#cba451]/30 shadow-lg group-hover:border-[#cba451] group-hover:shadow-[0_0_16px_rgba(203,164,81,0.25)] transition-all duration-300"
+              >
                 {item.icon}
-              </div>
+              </motion.div>
 
               {/* Title */}
-              <h3 className="text-2xl font-serif text-[#f3eee3] mb-3 tracking-wide">
+              <h3 className="text-2xl font-serif text-[#f3eee3] mb-3 tracking-wide group-hover:text-[#cba451] transition-colors duration-300">
                 {item.title}
               </h3>
 
               {/* Details Lines */}
               <div className="flex flex-col space-y-1.5">
                 {item.details.map((line, lineIndex) => (
-                  <p key={lineIndex} className="text-[#b8ad9e] text-sm leading-relaxed">
+                  <p key={lineIndex} className="text-[#b8ad9e] text-sm leading-relaxed group-hover:text-[#f3eee3] transition-colors duration-300">
                     {line}
                   </p>
                 ))}

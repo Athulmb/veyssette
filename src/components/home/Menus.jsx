@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const easeCurve = [0.16, 1, 0.3, 1];
 
@@ -76,15 +77,17 @@ const Menus = () => {
               designed for intimate luxury dining.
             </p>
 
-            <motion.button
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
-              type="button"
-              className="luxury-btn mt-8 flex h-[52px] items-center justify-center rounded-md bg-[#d8b065] px-8 text-sm font-semibold text-[#14120e] shadow-lg shadow-[#cba451]/15"
-            >
-              See Full Menu
-            </motion.button>
+            <Link to="/menu">
+              <motion.button
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                type="button"
+                className="luxury-btn mt-8 flex h-[52px] items-center justify-center rounded-md bg-[#d8b065] px-8 text-sm font-semibold text-[#14120e] shadow-lg shadow-[#cba451]/15"
+              >
+                See Full Menu
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
 

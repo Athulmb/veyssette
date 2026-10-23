@@ -28,6 +28,7 @@ code {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -39,6 +40,7 @@ code {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -50,6 +52,7 @@ code {
     opacity: 0;
     transform: translateX(-35px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -61,6 +64,7 @@ code {
     opacity: 0;
     transform: translateX(35px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -72,6 +76,7 @@ code {
     opacity: 0;
     transform: scale(0.92);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -79,27 +84,36 @@ code {
 }
 
 @keyframes floatSlow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
 }
 
 @keyframes floatSlowReverse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(8px);
   }
 }
 
 @keyframes pulseGoldGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(203, 164, 81, 0.4);
   }
+
   50% {
     box-shadow: 0 0 25px 6px rgba(203, 164, 81, 0.25);
   }
@@ -109,15 +123,19 @@ code {
   0% {
     transform: translateX(-150%) skewX(-25deg);
   }
+
   100% {
     transform: translateX(250%) skewX(-25deg);
   }
 }
 
 @keyframes subtlePulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.03);
   }
@@ -160,6 +178,7 @@ code {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -177,14 +196,37 @@ code {
 }
 
 /* Stagger animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
-.delay-800 { animation-delay: 800ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
 
 /* Luxury Shimmer Button Effect */
 .luxury-btn {
@@ -200,12 +242,10 @@ code {
   left: 0;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transform: translateX(-150%) skewX(-25deg);
   transition: none;
   pointer-events: none;
@@ -226,7 +266,7 @@ code {
 
 .luxury-card {
   transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .luxury-card:hover {
@@ -238,7 +278,7 @@ code {
 .reveal-init {
   opacity: 0;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -270,5 +310,41 @@ code {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #3d3323 #0a0907;
 }
 
+/* ==========================================================================
+   Modern Minimalist Luxury Scrollbar (WebKit)
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0907;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e261b;
+  border-radius: 9999px;
+  border: 1px solid rgba(203, 164, 81, 0.25);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cba451;
+  border-color: #e5c178;
+  box-shadow: 0 0 12px rgba(203, 164, 81, 0.45);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #e5c178;
+}
+
+/* Corner junction */
+::-webkit-scrollbar-corner {
+  background: #0a0907;
+}

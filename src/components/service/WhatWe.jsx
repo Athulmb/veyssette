@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const easeCurve = [0.16, 1, 0.3, 1];
 
@@ -10,36 +11,42 @@ export default function WhatWe() {
       description:
         "Exclusive in-home dining experiences crafted just for you and your guests. Perfect for intimate dinners and memorable nights.",
       image: "/image/magnific_luxury-hospitality-contac_vuGCVnJa47.webp",
+      path: "/services/private-dining",
     },
     {
-      title: "Meal Prep",
+      title: "Weekly Meal Prep",
       description:
         "Weekly or custom meal plans designed around your goals and preferences. Healthy, delicious and ready when you are.",
       image: "/image/magnific_luxury-gourmet-meat-dish-_ubWJi8TQLD.webp",
+      path: "/services/weekly-meal-prep",
     },
     {
       title: "Special Events",
       description:
         "From birthdays to anniversaries, we create extraordinary culinary experiences for your most important celebrations.",
       image: "/image/magnific_elegant-group-of-guests-r_vuAgZlia47-1024x765.webp",
+      path: "/services/special-events",
     },
     {
       title: "Corporate Dining",
       description:
         "Elevate your business gatherings with refined menus and seamless service that impresses every time.",
       image: "/image/magnific_luxury-gourmet-dining-tab_ONu4VlEynm.webp",
+      path: "/services/special-events",
     },
     {
       title: "Wellness & Dietary Plans",
       description:
         "Specialized menus for vegan, keto, gluten-free and other dietary needs without compromising on flavor or creativity.",
       image: "/image/magnific_overhead-view-of-a-curate_Vd7FUKVMMU-1-e1780267900616.webp",
+      path: "/services/weekly-meal-prep",
     },
     {
       title: "Wine Pairing Experience",
       description:
         "Carefully selected wine pairings designed to complement every dish and enhance the entire dining experience.",
       image: "/image/magnific_elegant-candlelit-private_y6uMIgDPW9.webp",
+      path: "/menu",
     },
   ];
 
@@ -126,13 +133,13 @@ export default function WhatWe() {
                 </div>
                 
                 <div className="pt-6">
-                  <a 
-                    href="#learn-more" 
+                  <Link 
+                    to={service.path} 
                     className="inline-flex items-center justify-center text-xs uppercase tracking-[0.2em] text-[#cba451] font-medium hover:text-[#e5c178] transition-colors group/link"
                   >
                     <span>Learn More</span>
                     <span className="ml-2 transform transition-transform duration-300 group-hover/link:translate-x-1">→</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>
