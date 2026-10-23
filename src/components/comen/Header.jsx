@@ -98,8 +98,12 @@ const Header = () => {
       <header className="sticky top-0 z-50 w-full border-b border-[#c5a45b]/30 bg-[#0d0c0a]/92 text-white backdrop-blur-md transition-all duration-300">
         <div className="mx-auto flex min-h-[72px] sm:min-h-[80px] lg:min-h-[96px] max-w-[1920px] items-center justify-between gap-3 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8">
 
-          {/* Logo */}
-          <NavLink to="/" className="flex shrink-0 items-center">
+          {/* Brand Logo */}
+          <NavLink
+            to="/"
+            className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90"
+            aria-label="Veyssette Home"
+          >
             <motion.img
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
