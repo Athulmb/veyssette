@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#c5a45b]/30 bg-[#0d0c0a]/90 text-white backdrop-blur-md transition-all duration-300">
-      <div className="mx-auto flex min-h-[96px] max-w-[1920px] items-center justify-between gap-8 px-6 lg:px-8">
+      <div className="mx-auto flex min-h-[72px] sm:min-h-[80px] lg:min-h-[96px] max-w-[1920px] items-center justify-between gap-3 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
         <NavLink to="/" className="flex shrink-0 items-center">
@@ -25,12 +25,12 @@ const Header = () => {
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
             src="/image/logo.webp"
             alt="Veyssette logo"
-            className="h-[60px] w-auto object-contain cursor-pointer"
+            className="h-[44px] sm:h-[50px] lg:h-[60px] w-auto object-contain cursor-pointer"
           />
         </NavLink>
 
         {/* Navigation */}
-        <nav className="hidden items-center gap-10 xl:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-8 2xl:gap-10 text-sm xl:text-base">
           <NavLink
             to="/"
             end
@@ -241,33 +241,44 @@ const Header = () => {
         </nav>
 
         {/* Contact and CTA */}
-        <div className="hidden shrink-0 items-center gap-8 lg:flex">
+        <div className="hidden shrink-0 items-center gap-4 lg:flex xl:gap-8">
           <motion.a
             whileHover={{ x: 3 }}
             href="tel:+10331234567"
-            className="flex items-center gap-3 whitespace-nowrap text-lg font-semibold text-white hover:text-[#c5a45b] transition-colors"
+            className="hidden items-center gap-2 whitespace-nowrap text-sm font-semibold text-white hover:text-[#c5a45b] transition-colors xl:flex xl:text-base 2xl:text-lg"
           >
-            <Phone size={20} className="fill-[#c5a45b] text-[#c5a45b]" />
+            <Phone size={18} className="fill-[#c5a45b] text-[#c5a45b]" />
             <span>+(1) 033 1234-567</span>
           </motion.a>
 
           <NavLink
             to="/book"
-            className="luxury-btn flex min-h-[52px] min-w-[170px] items-center justify-center rounded-lg bg-[#cbaa63] px-6 text-sm font-bold tracking-wide text-[#15130f] shadow-lg shadow-[#cbaa63]/20 hover:scale-104 transition-transform"
+            className="luxury-btn flex min-h-[44px] items-center justify-center rounded-lg bg-[#cbaa63] px-5 text-xs font-bold tracking-wide text-[#15130f] shadow-lg shadow-[#cbaa63]/20 hover:scale-104 transition-transform lg:min-h-[48px] lg:px-6 lg:text-sm"
           >
             Book A Chef
           </NavLink>
         </div>
 
-        {/* Mobile menu toggle */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle navigation menu"
-          className="rounded-md border border-[#c5a45b]/50 p-2.5 text-[#c5a45b] lg:hidden"
-        >
-          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Mobile menu toggle & Quick CTA */}
+        <div className="flex items-center gap-2.5 sm:gap-3 lg:hidden">
+          <NavLink
+            to="/book"
+            className="luxury-btn flex h-9 sm:h-10 items-center justify-center rounded-lg bg-[#cbaa63] px-3 sm:px-4 text-xs font-bold text-[#15130f]"
+          >
+            Book A Chef
+          </NavLink>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            className="flex items-center gap-1.5 rounded-md border border-[#c5a45b]/50 bg-[#14120e] p-2 text-[#c5a45b] hover:bg-[#c5a45b]/10 transition-colors"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            <span className="text-xs font-semibold uppercase tracking-wider hidden sm:inline">Menu</span>
+          </button>
+        </div>
 
       </div>
 
