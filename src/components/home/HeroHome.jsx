@@ -92,8 +92,8 @@ const HeroHome = () => {
             >
               <motion.a
                 whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
+                whileTap={{ scale: 0.95, y: 2 }}
+                transition={{ duration: 0.15 }}
                 href="/book-a-chef"
                 className="luxury-btn flex h-[52px] items-center justify-center rounded-md bg-[#d8b065] px-7 text-sm font-semibold text-[#14120e] shadow-lg shadow-[#cba451]/20"
               >
@@ -102,8 +102,8 @@ const HeroHome = () => {
 
               <motion.a
                 whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
+                whileTap={{ scale: 0.95, y: 2 }}
+                transition={{ duration: 0.15 }}
                 href="/services"
                 className="luxury-btn flex h-[52px] items-center justify-center rounded-md border border-[#cba451]/60 px-7 text-sm font-semibold text-[#f3eee3] hover:border-[#cba451] hover:bg-[#cba451]/10"
               >

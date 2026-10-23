@@ -193,10 +193,10 @@ export const GetInTech = () => {
                   ></textarea>
                 </div>
 
-                {/* Submit Button with Spring Hover & Tap */}
+                {/* Submit Button with Tactile Hover & Tap */}
                 <motion.button 
                   whileHover={{ scale: 1.015 }}
-                  whileTap={{ scale: 0.985 }}
+                  whileTap={{ scale: 0.95, y: 2 }}
                   type="submit"
                   className="w-full bg-[#c5a059] hover:bg-[#d8b065] text-[#0a0907] font-semibold text-sm rounded-md py-4 transition-colors duration-300 shadow-md cursor-pointer mt-1"
                 >

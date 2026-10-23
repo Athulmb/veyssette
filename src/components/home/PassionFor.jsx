@@ -67,8 +67,8 @@ const PassionFor = () => {
           <div className="mt-10">
             <motion.a
               whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
+              whileTap={{ scale: 0.95, y: 2 }}
+              transition={{ duration: 0.15 }}
               href="/about"
               className="luxury-btn inline-flex h-[52px] items-center justify-center rounded-md bg-[#d8b065] px-8 text-sm font-semibold text-[#14120e] shadow-lg shadow-[#cba451]/15"
             >

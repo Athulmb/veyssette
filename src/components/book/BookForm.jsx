@@ -369,7 +369,7 @@ const BookForm = () => {
 
                   <motion.button
                     whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileTap={{ scale: 0.95, y: 2 }}
                     type="submit"
                     className="luxury-btn w-full h-16 rounded-xl bg-[#cbaa63] font-serif text-lg font-bold tracking-wide text-[#0e0c0a] shadow-xl shadow-[#cbaa63]/20 hover:bg-[#d8b56f] transition-all"
                   >

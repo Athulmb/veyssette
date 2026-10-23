@@ -44,7 +44,7 @@ export const RedyTo = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3, ease: easeCurve }}
             whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ scale: 0.95, y: 2 }}
             href="/contact"
             className="luxury-btn inline-flex items-center justify-center rounded-lg bg-[#cba65b] px-10 py-4 text-base font-semibold text-black shadow-xl shadow-[#cba451]/20 sm:px-14 sm:text-lg cursor-pointer"
           >
